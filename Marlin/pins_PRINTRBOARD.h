@@ -15,6 +15,9 @@
 
 #define LARGE_FLASH        true
 
+//Disable JTAG pins so they can be used for the Extrudrboard
+#define DISABLE_JTAG       true
+
 #define X_STEP_PIN          0
 #define X_DIR_PIN           1
 #define X_ENABLE_PIN       39
@@ -50,6 +53,7 @@
 #else
   #define Y_STOP_PIN        8 // Ystop in Ystop socket
 #endif
+//#define Y_STOP_PIN        8 // Ystop in Ystop socket
 #define Z_STOP_PIN         36
 #define TEMP_0_PIN          1  // Extruder / Analog pin numbering
 #define TEMP_BED_PIN        0  // Bed / Analog pin numbering
@@ -64,7 +68,8 @@
 ////LCD Pin Setup////
 
 #define SDPOWER            -1
-#define SDSS                8
+// uses pinMode() in Sd2Card.cpp, so use arduino pin number
+#define SDSS               2
 #define LED_PIN            -1
 #define PS_ON_PIN          -1
 #define KILL_PIN           -1
@@ -89,6 +94,18 @@
   #endif // LCD_I2C_PANELOLU2
   //not connected to a pin
   #define SD_DETECT_PIN -1
+  
+  #define LCD_PINS_RS 9
+  #define LCD_PINS_ENABLE 8
+  #define LCD_PINS_D4 7
+  #define LCD_PINS_D5 6
+  #define LCD_PINS_D6 5
+  #define LCD_PINS_D7 4
+
+  #define BTN_EN1   16
+  #define BTN_EN2   17
+  #define BTN_ENC   18//the click
+  
 #endif // ULTRA_LCD && NEWPANEL
 
 #if ENABLED(VIKI2) || ENABLED(miniVIKI)

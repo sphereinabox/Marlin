@@ -623,6 +623,10 @@ void enableStepperDrivers() { pinMode(STEPPER_RESET_PIN, INPUT); }  // set to in
  *    • status LEDs
  */
 void setup() {
+#ifdef DISABLE_JTAG
+  MCUCR = 0x80;
+  MCUCR = 0x80;
+#endif
   setup_killpin();
   setup_filrunoutpin();
   setup_powerhold();
